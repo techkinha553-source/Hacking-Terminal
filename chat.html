@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>  
+  <meta charset="UTF-8">
+  <title>Hacking Simulator</title>
+  <style>
+    body {
+      background-color: black;
+      color: #00ff00;
+      font-family: 'Courier New', monospace;
+      padding: 20px;
+    }
+
+    .message {
+      margin: 10px 0;
+    }
+
+    .blinking-dots::after {
+      content: '';
+      display: inline-block;
+      width: 1ch;
+      animation: dots 1s steps(3, end) infinite;
+    }
+
+    @keyframes dots {
+      0% { content: ''; }
+      33% { content: '.'; }
+      66% { content: '..'; }
+      100% { content: '...'; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="terminal"></div>
+
+  <script>
+    alert("Enter at your own risk")
+    const messages = [
+      "Initializing Hacking",
+      "Reading your Files",
+      "==> Checking for `sudo` access (which may request your password)",
+      "Password files Detected",
+      "Sending all passwords and personal files to server",
+      "==> This script will install", 
+      "opt /homebrew/ /bin/ /brew/",
+      "opt /homebrew/ share do /chomebrew/ ",
+      "opt /homebrew/sharezshsite-functionsbrew /opthomebrew/ ",
+      "==> The following new directories will be created",
+      "Cleaning up"
+    ];
+
+    const terminal = document.getElementById("terminal");
+
+    async function showMessages() {
+      for (let msg of messages) {
+        const div = document.createElement("div");
+        div.className = "message blinking-dots";
+        div.textContent = msg;
+        terminal.appendChild(div);
+
+        // Wait for 1 to 7 seconds
+        const delay = Math.floor(Math.random() * 7000) + 1000;
+        await new Promise(resolve => setTimeout(resolve, delay));
+
+        // Stop blinking by removing the class
+        div.classList.remove("blinking-dots");
+        div.textContent += "...";
+      }
+    }
+
+    showMessages();
+  </script>
+
+</body>
+</html>

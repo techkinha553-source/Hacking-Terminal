@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        background-color: black;
+        color: rgb(116, 229, 116);
+        font-size: 23px;
+        margin: 18px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="line1">Initializing Hacking</div>
+    <div class="line2">Initialized Hacking now reading your data</div>
+    <div class="line3">Reading your files</div>
+    <div class="line4">Password files Detected</div>
+    <div class="line5">Sending all passwords and personal files to server</div>
+    <div class="line6">Cleaning up</div>
+
+    <script>
+            const lines = [
+              document.querySelector(".line1"),
+              document.querySelector(".line2"),
+              document.querySelector(".line3"),
+              document.querySelector(".line4"),
+              document.querySelector(".line5"),
+              document.querySelector(".line6"),
+            ];
+
+            const originalTexts = lines.map((line) => line.innerText);
+            const maxDots = [3, 4, 2, 3, 5, 2]; // Number of dots per line (custom pattern)
+
+            lines.forEach((line, index) => {
+              let count = 0;
+              setInterval(() => {
+                let dots = ".".repeat(count % (maxDots[index] + 1));
+                line.innerText = originalTexts[index] + dots;
+                count++;
+              }, 700); // Adjust interval speed here
+            });
+    </script>
+  </body>
+</html>
